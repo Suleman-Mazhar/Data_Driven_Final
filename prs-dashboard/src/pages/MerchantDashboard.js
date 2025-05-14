@@ -51,9 +51,9 @@ const MerchantDashboard = () => {
         // Fetch store locations for the merchant
         try {
           const response = await merchantsService.getStoreLocations();
-          const locations = response.data;
+          const locations = response.data || [];
           
-          setStoreLocations(locations);
+          setStoreLocations(Array.isArray(locations) ? locations : []);
           
           if (locations && locations.length > 0) {
             setSelectedLocation(locations[0]);
@@ -321,7 +321,7 @@ const MerchantDashboard = () => {
               label="Location"
               onChange={(e) => handleLocationChange(e.target.value)}
             >
-              {storeLocations.map((location) => (
+              {Array.isArray(storeLocations) && storeLocations.map((location) => (
                 <MenuItem key={location.location_id} value={location.location_id}>
                   {location.store_name} - {location.city}
                 </MenuItem>
