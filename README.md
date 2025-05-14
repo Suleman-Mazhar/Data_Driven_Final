@@ -155,4 +155,6 @@ All database models and API routes are implemented in the Flask backend, providi
 
 ## Document Storage
 
+Make sure to update file path in .env file to match for prs_documents
+
 Vaccination documents and other files are stored in the file system path specified by `DOCUMENT_STORAGE_PATH` in the .env file. Make sure this directory exists and has proper access permissions.
